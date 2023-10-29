@@ -28,5 +28,5 @@ int Job::getJobId(){
 }
 
 void Job::printInfo(){
-    cout<<"\nid: "<<id<<"\nsize: "<< size<<"\npartitionId: "<<partitionId<<"\nState: "<< jobState<<endl;
+    cout<<"\nJob ID: "<<id<<"\nsize: "<< size<<"\npartitionId: "<<partitionId<<"\nState: "<< jobState<<endl;
 }

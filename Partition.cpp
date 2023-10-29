@@ -31,5 +31,5 @@ int Partition::getSize(){
     return size;
 }
 void Partition::printInfo(){
-    cout << "Partition ID: "<<id<<"\nsize: "<<size<<"\nIn Use:"<<inUse<<"\nJob ID: "<<jobId<<endl;
+    cout << "\nPartition ID: "<<id<<"\nsize: "<<size<<"\nIn Use:"<<inUse<<"\nJob ID: "<<jobId<<endl;
 }

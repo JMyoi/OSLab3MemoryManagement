@@ -25,32 +25,25 @@ int main(){
         jobList.at(i).printInfo();
     }
 
-
-
-
-    // Partition p1(100);
-    // p1.setJob(2);
-    // p1.setSize(50);
-    // Partition p2(20);
-    // mainMemory.push_back(p1);
-    // mainMemory.push_back(p2);
-    // jobList.size();
-    // for(int i = 0; i<mainMemory.size();i++){
-    //     mainMemory.at(i).printInfo();
-    // }
-    // cout<<endl<<"*******************************************";
-
-    // Job j1(20);
-    // Job j2(30);
-    // jobList.push_back(j1);
-    // jobList.push_back(j2);
-    // for(int i = 0; i<jobList.size(); i++){
-    //     jobList.at(i).printInfo();
-    // }
+    cout<<"Enter the number of partitions: \n";
+    int numPartitions = 0;
+    cin>>numPartitions;
+    for(int i =0; i<numPartitions; i++){
+        int sizePartition = 0;
+        cout<<"Enter the size of partition "<<i+1<<endl;
+        cin>>sizePartition;
+        Partition currentPartition(sizePartition);
+        mainMemory.push_back(currentPartition);
+    }
+    for(int i =0; i<mainMemory.size(); i++){
+        mainMemory.at(i).printInfo();
+    }
     
 
-    //ask for user to input the number of jobs and the size of each job
-    //ask the user for th enumber of partitions and the size of each partition
+
+
+
+    
 
     //run the data through all algorithms and display it nicely.
     return 0;
