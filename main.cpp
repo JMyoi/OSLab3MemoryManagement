@@ -11,12 +11,12 @@ int main(){
     vector<Job> jobList;
     vector<Partition> mainMemory;
 
-    cout<<"Enter the number of jobs: \n";
+    cout<<"Enter the number of jobs: ";
     int numJobs = 0;
     cin>>numJobs;
     for(int i = 0; i<numJobs; i++){
         int jobSize = 0;
-        cout<<"Enter the size of job number "<<i+1<<endl;
+        cout<<"Enter the size of job number "<<i+1<<": ";
         cin>>jobSize;
         Job currentJob(jobSize);
         jobList.push_back(currentJob);
@@ -25,12 +25,12 @@ int main(){
         jobList.at(i).printInfo();
     }
 
-    cout<<"Enter the number of partitions: \n";
+    cout<<"Enter the number of partitions: ";
     int numPartitions = 0;
     cin>>numPartitions;
     for(int i =0; i<numPartitions; i++){
         int sizePartition = 0;
-        cout<<"Enter the size of partition "<<i+1<<endl;
+        cout<<"Enter the size of partition "<<i+1<<": ";
         cin>>sizePartition;
         Partition currentPartition(sizePartition);
         mainMemory.push_back(currentPartition);
@@ -39,6 +39,7 @@ int main(){
         mainMemory.at(i).printInfo();
     }
     
+    firstFit(mainMemory, jobList);
 
 
 

@@ -1,6 +1,9 @@
 {
   "version": "0.2.0",
   "configurations": [
+    
+
+
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
@@ -9,7 +12,7 @@
       "stopAtEntry": false,
       "externalConsole": true,
       "cwd": "c:/School/OSLab3MemoryManagement",
-      "program": "c:/School/OSLab3MemoryManagement/build/Debug/outDebug",
+      "program": "c:/School/OSLab3MemoryManagement/myProgram",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
