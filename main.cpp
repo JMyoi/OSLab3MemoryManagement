@@ -13,13 +13,24 @@ int main(){
     //create vector of partitions and call it main memory
     vector<Partition> mainMemory;
     Partition p1(100);
-    p1.printInfo();
     p1.setJob(2);
     p1.setSize(50);
-    p1.printInfo();
     Partition p2(20);
-    p2.printInfo();
-    cout<<p2.getPartitionId()<<endl<<p2.getSize()<<endl;
+    mainMemory.push_back(p1);
+    mainMemory.push_back(p2);
+    jobList.size();
+    for(int i = 0; i<mainMemory.size();i++){
+        mainMemory.at(i).printInfo();
+    }
+    cout<<endl<<"*******************************************";
+
+    Job j1(20);
+    Job j2(30);
+    jobList.push_back(j1);
+    jobList.push_back(j2);
+    for(int i = 0; i<jobList.size(); i++){
+        jobList.at(i).printInfo();
+    }
     
 
     //ask for user to input the number of jobs and the size of each job

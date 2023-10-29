@@ -6,11 +6,11 @@ class Partition{
     public:
         Partition();
         Partition(int size);
-        void printInfo();
         void setJob(int jobId);
         void setSize(int size); 
         int getPartitionId();
         int getSize();
+        void printInfo();
 
 
     private:

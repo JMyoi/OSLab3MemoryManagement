@@ -2,27 +2,31 @@
 #include <iostream>
 using namespace std;
 
+int Job::nextId = 0;
+
 Job::Job(){
-//set jobid
-//set partitionid to null
-//size =0;
-//set jobstatus = waiting
+    id = nextId++;
+    partitionId = -1;
+    size = 0;
+    jobState = "wait";
 }
 
 Job::Job(int size){
-//set jobid
-//set partitionid to null
-//size =size;
-//set jobstatus = waiting
+    id = nextId++;
+    partitionId = -1;
+    this->size = size;
+    jobState = "wait";
 }
+
 void Job::setPartition(int partitionId){
-    //this->partitionid = partitionId
-    //jobStatus = run
+    this->partitionId = partitionId;
+    jobState = "run";
 }
-int getJobId(){
-    
+
+int Job::getJobId(){
+    return id;
 }
 
 void Job::printInfo(){
-
+    cout<<"\nid: "<<id<<"\nsize: "<< size<<"\npartitionId: "<<partitionId<<"\nState: "<< jobState<<endl;
 }
