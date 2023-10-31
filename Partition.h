@@ -8,6 +8,7 @@ class Partition{
         Partition(int size);
         void setJob(int jobId);
         void setSize(int size); 
+        void setWaste(int w);
         int getPartitionId();
         int getSize();
         void printInfo();
@@ -19,7 +20,7 @@ class Partition{
         bool inUse;
         int jobId;//the process it is assigned to if none zet to null
         int size;
-        //int partitionWaste?
+        int waste;
 
 
 };
