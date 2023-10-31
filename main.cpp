@@ -53,7 +53,9 @@ int main(){
     cout<<"**********************************************************************\n";
 
     cout<<"*******************************Best-Fit*******************************\n";
-
+    vector<Job> BFjobList = jobList;
+    vector<Partition> BFmainMemory  = mainMemory;
+    bestFit(BFmainMemory, BFjobList);
     cout<<"**********************************************************************\n";
 
     cout<<"*******************Worst-Fit(Dynamic parititons)**********************\n";

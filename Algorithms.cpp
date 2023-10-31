@@ -8,8 +8,6 @@
 using namespace std;
 
      void outputInfo(vector<Partition>& mainMemory, vector<Job>& jobList){
-          cout<<"size of jobList: "<<jobList.size()<<endl;
-          jobList.at(3).getJobId();
           cout<<"Job Id"<<setw(16)<<"PartitionId"<<setw(10)<<"State"<<setw(10)<<"waste"<<endl;
           for(int i= 0; i<jobList.size(); i++){
                jobList.at(i).printInfo();
@@ -84,3 +82,47 @@ void nextFit(vector<Partition>& mainMemory, vector<Job>& jobList){
      outputInfo(mainMemory,jobList);
 }
      
+void bestFit(vector<Partition>& mainMemory, vector<Job>& jobList){
+     int bestIndex = -1;
+     int  bestWaste;
+     int waste;
+
+     for(int i = 0; i<jobList.size(); i++){
+
+          for(int j = 0; j<mainMemory.size();j++){
+               //if its the beggining of the partition set the best waste to the first waste.
+               if(j==0){
+                    bestWaste = mainMemory.at(j).getSize() - jobList.at(i).getSize();
+                    waste = mainMemory.at(j).getSize() - jobList.at(i).getSize();
+                    if((waste>=0 && waste<=bestWaste && !mainMemory.at(j).Used()) || (bestWaste<0 && waste>=0 && !mainMemory.at(j).Used())  ){
+                         bestWaste = waste;
+                         bestIndex = j;
+                    }
+               }
+               else{
+                    waste = mainMemory.at(j).getSize() - jobList.at(i).getSize();
+                    //if the initial waste best waste is negative and the new wate is positive then 
+                    //make that the new best waste because a negative waste means it will not fit
+                    //or if the waste is positive and it is better than the current best waste 
+                    if((waste>=0 && waste<=bestWaste && !mainMemory.at(j).Used()) || (bestWaste<0 && waste>=0 && !mainMemory.at(j).Used())  ){
+                         bestWaste = waste;
+                         bestIndex = j;
+                    }
+               }
+                 
+          }
+
+          //if there is a partition that best fits the job and it is not in use then assign the job to the partition.
+          if(bestIndex>=0){
+               //set the job to that partition
+               mainMemory.at(bestIndex).setJob(jobList.at(i).getJobId());
+               //set the partition to that job
+               jobList.at(i).setPartition(mainMemory.at(bestIndex).getPartitionId());
+               //set the waste of the partition 
+               mainMemory.at(bestIndex).setWaste(mainMemory.at(bestIndex).getSize() - jobList.at(i).getSize());
+               jobList.at(i).setWaste(mainMemory.at(bestIndex).getSize() - jobList.at(i).getSize());
+          }
+          bestIndex =-1;
+     }
+     outputInfo(mainMemory, jobList);
+}

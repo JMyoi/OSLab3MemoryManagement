@@ -44,5 +44,12 @@ int Job::getSize(){
 
 
 void Job::printInfo(){
-    cout<<id<<setw(16)<<partitionId<<setw(14)<< jobState;
+    cout<<id;
+    if(partitionId == -1){
+        cout<<setw(16)<<"-";
+    }
+    else{
+        cout<<setw(16)<<partitionId;
+    }
+    cout<<setw(14)<< jobState;
 }
