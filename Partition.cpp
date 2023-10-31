@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-int Partition::nextId = 0;
+int Partition::nextId = 1;
 
 Partition::Partition(){
     size = 0;
@@ -19,6 +19,10 @@ Partition::Partition(int size){
     waste = 0;
 
 }
+bool Partition::Used(){
+    return inUse;
+}
+
 void Partition::setJob(int jobId){
     this->jobId = jobId;
     inUse = true;
@@ -35,6 +39,10 @@ int Partition::getSize(){
 void Partition::setWaste(int w){
     waste = w;
 }
+int Partition::getWaste(){
+    return waste;
+}
+
 void Partition::printInfo(){
     cout << "\nPartition ID: "<<id<<"\nsize: "<<size<<"\nIn Use:"<<inUse<<"\nJob ID: "<<jobId<<"\nwaste: "<<waste<<endl;
 }

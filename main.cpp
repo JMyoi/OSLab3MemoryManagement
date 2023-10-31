@@ -21,9 +21,9 @@ int main(){
         Job currentJob(jobSize);
         jobList.push_back(currentJob);
     }
-    for(int i =0; i<jobList.size(); i++){
-        jobList.at(i).printInfo();
-    }
+    // for(int i =0; i<jobList.size(); i++){
+    //     jobList.at(i).printInfo();
+    // }
 
     cout<<"Enter the number of partitions: ";
     int numPartitions = 0;
@@ -35,11 +35,19 @@ int main(){
         Partition currentPartition(sizePartition);
         mainMemory.push_back(currentPartition);
     }
-    for(int i =0; i<mainMemory.size(); i++){
-        mainMemory.at(i).printInfo();
-    }
+    // for(int i =0; i<mainMemory.size(); i++){
+    //     mainMemory.at(i).printInfo();
+    // }
     
+    cout<<"*******************************First-Fit******************************\n";
     firstFit(mainMemory, jobList);
+    cout<<"**********************************************************************\n";
+    cout<<"*******************************Next-Fit*******************************\n";
+    cout<<"**********************************************************************\n";
+    cout<<"*******************************Best-Fit*******************************\n";
+    cout<<"**********************************************************************\n";
+    cout<<"*******************Worst-Fit(Dynamic parititons)**********************\n";
+    cout<<"**********************************************************************\n";
 
 
 
@@ -49,3 +57,4 @@ int main(){
     //run the data through all algorithms and display it nicely.
     return 0;
 }
+

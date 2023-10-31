@@ -11,7 +11,9 @@ class Partition{
         void setWaste(int w);
         int getPartitionId();
         int getSize();
+        int getWaste();
         void printInfo();
+        bool Used();
 
 
     private:
