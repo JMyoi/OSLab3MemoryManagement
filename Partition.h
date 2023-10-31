@@ -14,6 +14,9 @@ class Partition{
         int getWaste();
         void printInfo();
         bool Used();
+        void setParentPartition(int s);
+        int getParentPartition();
+        
 
 
     private:
@@ -23,6 +26,8 @@ class Partition{
         int jobId;//the process it is assigned to if none zet to null
         int size;
         int waste;
+        // If this partitoin was split from a parent partition this field holds the id of the parent partition
+        int parentPartition;
 
 
 };

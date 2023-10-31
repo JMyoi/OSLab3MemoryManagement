@@ -84,7 +84,7 @@ void nextFit(vector<Partition>& mainMemory, vector<Job>& jobList){
      
 void bestFit(vector<Partition>& mainMemory, vector<Job>& jobList){
      int bestIndex = -1;
-     int  bestWaste;
+     int bestWaste;
      int waste;
 
      for(int i = 0; i<jobList.size(); i++){
@@ -125,4 +125,52 @@ void bestFit(vector<Partition>& mainMemory, vector<Job>& jobList){
           bestIndex =-1;
      }
      outputInfo(mainMemory, jobList);
+}
+
+void worstFit(vector<Partition>& mainMemory, vector<Job>& jobList){
+     int worstIndex = -1;
+     int worstWaste;
+     int waste;
+     
+     for(int i = 0; i<jobList.size(); i++){
+
+          for(int j =0; j<mainMemory.size(); j++){
+               //assign an initial worst waste at th first loop
+               if(j==0){
+                    worstWaste = mainMemory.at(j).getSize() - jobList.at(i).getSize();
+                    waste = mainMemory.at(j).getSize() - jobList.at(i).getSize();
+                    if((waste>=0 && waste>=worstWaste && !mainMemory.at(j).Used()) || (worstWaste<0 && waste>=0 && !mainMemory.at(j).Used())){
+                         worstWaste = waste;
+                         worstIndex = j;
+                    }
+               }
+               else{
+                    waste = mainMemory.at(j).getSize() - jobList.at(i).getSize();
+                    //pick the worst waste out of the 2 and if waste is worse than the current worse check to make sure it is not already in use.
+                    if((waste>=0 && waste>=worstWaste && !mainMemory.at(j).Used()) || (worstWaste<0 && waste>=0 && !mainMemory.at(j).Used())){
+                         worstWaste = waste;
+                         worstIndex = j;
+                    }
+               }
+          }
+          if(worstIndex>=0){
+               //set the job to the worst partition
+               mainMemory.at(worstIndex).setJob(jobList.at(i).getJobId());
+               jobList.at(i).setPartition(mainMemory.at(worstIndex).getPartitionId());
+               //resize the partition if the waste is greater than zero and split it into 2 with the second partition size of the waste
+               int newPartitionSize = mainMemory.at(worstIndex).getSize() - jobList.at(i).getSize();
+               if(newPartitionSize>0){
+                    Partition newPartition(newPartitionSize);
+                    newPartition.setParentPartition(mainMemory.at(worstIndex).getPartitionId());
+                    mainMemory.insert(mainMemory.begin()+worstIndex, newPartition);
+                    //resize the parent partition to fit the job size
+                    mainMemory.at(worstIndex).setSize(jobList.at(i).getSize());
+               }
+               
+          }
+          worstIndex = -1;
+
+     }
+     cout<<"Nubmer of main memory partitions: "<<mainMemory.size()<<endl;
+     outputInfo(mainMemory,jobList);
 }

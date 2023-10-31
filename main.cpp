@@ -59,7 +59,9 @@ int main(){
     cout<<"**********************************************************************\n";
 
     cout<<"*******************Worst-Fit(Dynamic parititons)**********************\n";
-
+    vector<Job> WFjobList = jobList;
+    vector<Partition> WFmainMemory  = mainMemory;
+    worstFit(WFmainMemory, WFjobList);
     cout<<"**********************************************************************\n";
 
 

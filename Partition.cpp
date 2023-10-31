@@ -10,6 +10,8 @@ Partition::Partition(){
     jobId = -1;
     inUse = false;
     waste = 0;
+    parentPartition = -1;
+    
 }
 Partition::Partition(int size){
     this->size = size;
@@ -17,6 +19,7 @@ Partition::Partition(int size){
     jobId = -1;
     inUse = false;
     waste = 0;
+    parentPartition = -1;
 
 }
 bool Partition::Used(){
@@ -42,6 +45,13 @@ void Partition::setWaste(int w){
 int Partition::getWaste(){
     return waste;
 }
+void Partition::setParentPartition(int s){
+    parentPartition = s;
+}
+int Partition::getParentPartition(){
+    return parentPartition;
+}
+
 
 void Partition::printInfo(){
     cout << "\nPartition ID: "<<id<<"\nsize: "<<size<<"\nIn Use:"<<inUse<<"\nJob ID: "<<jobId<<"\nwaste: "<<waste<<endl;
