@@ -1,5 +1,6 @@
 #include "Job.h"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 int Job::nextId = 1;
@@ -43,5 +44,5 @@ int Job::getSize(){
 
 
 void Job::printInfo(){
-    cout<<"Job ID: "<<id<<"partition Id: "<<partitionId<<"State: "<< jobState;
+    cout<<id<<setw(16)<<partitionId<<setw(14)<< jobState;
 }

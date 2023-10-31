@@ -38,15 +38,26 @@ int main(){
     // for(int i =0; i<mainMemory.size(); i++){
     //     mainMemory.at(i).printInfo();
     // }
-    
+    //always use new vector object when giving it to algorithms so that the manipulated data of 
+    //an object from an algorithm does not pass on to others.
     cout<<"*******************************First-Fit******************************\n";
-    firstFit(mainMemory, jobList);
+    vector<Job> FFjobList = jobList;
+    vector<Partition> FFmainMemory = mainMemory;
+    firstFit(FFmainMemory, FFjobList);
     cout<<"**********************************************************************\n";
+
     cout<<"*******************************Next-Fit*******************************\n";
+    vector<Job> NFjobList = jobList;
+    vector<Partition> NFmainMemory  = mainMemory;
+    nextFit(NFmainMemory, NFjobList);
     cout<<"**********************************************************************\n";
+
     cout<<"*******************************Best-Fit*******************************\n";
+
     cout<<"**********************************************************************\n";
+
     cout<<"*******************Worst-Fit(Dynamic parititons)**********************\n";
+
     cout<<"**********************************************************************\n";
 
 
