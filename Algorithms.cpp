@@ -171,6 +171,5 @@ void worstFit(vector<Partition>& mainMemory, vector<Job>& jobList){
           worstIndex = -1;
 
      }
-     cout<<"Nubmer of main memory partitions: "<<mainMemory.size()<<endl;
      outputInfo(mainMemory,jobList);
 }
