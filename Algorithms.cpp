@@ -7,6 +7,7 @@
 using namespace std;
 
    void firstFit(vector<Partition>& mainMemory, vector<Job>& jobList){
+        //vector start at zero
         jobList.at(0).setPartition(3);
         jobList.at(0).printInfo();
         mainMemory.at(0).setJob(3);
